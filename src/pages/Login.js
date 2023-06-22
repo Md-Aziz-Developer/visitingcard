@@ -5,6 +5,7 @@ import { Link, useNavigate } from 'react-router-dom';
 export default function Login() {
     const [email,setEmail]=useState('');
     const [password,setPassword]=useState('');
+    const [errmessage,setErrMessage]=useState('');
     const naviagte=useNavigate();
     axios.defaults.withCredentials=true;
     function loginUser(e){
@@ -17,6 +18,9 @@ export default function Login() {
                 naviagte('/');
             }else{
                 console.log(res);
+               if(res.data.Status=='failed'){
+                setErrMessage(res.data.message);
+               }
             }
         })
         .catch(err=>console.log(err))
@@ -27,6 +31,10 @@ export default function Login() {
     <div className='row justify-content-center'>
         <div className='col-12 col-md-4 p-3 border rounded mt-5'>
             <h3 className='text-center'>Login Now</h3>
+            {errmessage!='' ?
+            <h4 className="text-danger text-center">{errmessage}</h4>
+            : ''
+            }
             <form onSubmit={loginUser}>
             
             <div className='form-group mb-3'>
