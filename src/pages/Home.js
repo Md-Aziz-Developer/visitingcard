@@ -21,12 +21,12 @@ export default function Home() {
   
   return (
     <>
-    <div className='container p-5'>
-      <div className='row'>
-        <div className='col-md-4'>
+    <div className='container-fluid'>
+      <div className='row flex-nowwrap'>
+        <div className='col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-dark'>
        <Sidebar/>
         </div>
-        <div className='col-md-8 p-5' >
+        <div className='col py-3' >
       <h3>Welcome {user.fld_name}</h3>
         </div>
       </div>
